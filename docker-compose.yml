@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: web_application
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/var/www
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      - POSTGRES_DB=inatel_db
+      - POSTGRES_USER=inateldbuser
+      - POSTGRES_PASSWORD=inateldbuser
+    ports:
+      - 5432:5432
+    volumes:
+     - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+
+volumes:
+  postgres_data:
