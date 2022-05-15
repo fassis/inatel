@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% block content-title %}
+{{title}}
+{% endblock %}
+
+{% block content %}
+
+{% bootstrap_messages %}
+<br/>   
+<form class="form" method="post">
+    {% csrf_token %}
+    <div class="row">
+        {% bootstrap_form form layout='inline' %}
+        <div class="col">
+            <button type="submit" class="btn btn-primary">
+                Consultar API
+            </button>
+        </div>
+    </div>
+</form>
+<br/>
+{%  if object_list %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Data</th>
+            <th scope="col">UF</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Nº Casos</th>
+            <th scope="col">Nº Mortes</th>
+            <th scope="col">Nº Suspeitos</th>
+            <th scope="col">Nº Casos Descartados</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.uid }}</td>
+            <td>{{ obj.datetime }}</td>
+            <td>{{ obj.uf }}</td>
+            <td>{{ obj.state }}</td>
+            <td>{{ obj.cases }}</td>
+            <td>{{ obj.deaths }}</td>
+            <td>{{ obj.suspects }}</td>
+            <td>{{ obj.refuses }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
