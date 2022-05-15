@@ -51,13 +51,12 @@
                                     <a class="nav-link" href="{{ health_unities_import }}">Importar Unidades de Saúde</a>
                                 </li>
                                 {% url 'coreapp:health_unity_file_list' as health_unity_file_list %}
-                                <li class="nav-item {% if request.path == health_unity_file_list or request.path == health_unity_file_list %}active{% endif %}">
+                                <li class="nav-item {% if request.path == health_unity_file_list %}active{% endif %}">
                                     <a class="nav-link" href="{{ health_unity_file_list }}">Listar Importações</a>
                                 </li>
-                                {% url 'weather:index' as weather %}
-                                <li class="nav-item {% if request.path == weather %}active{% endif %}"
-                                    href="{{ weather }}">
-                                    <a class="nav-link">API Covid 19</a>
+                                {% url 'covidapi:covid_cases' as covid_cases %}
+                                <li class="nav-item {% if request.path == covid_cases %}active{% endif %}">
+                                    <a class="nav-link" href="{{ covid_cases }}">API Covid 19</a>
                                 </li>
                                 {% url 'logs:list' as logs_list %}
                                 <li class="nav-item {% if request.path == logs_list %}active{% endif %}">
@@ -87,7 +86,7 @@
                     2. Tela de Login contendo os campos “usuário” e “senha” previamente cadastrados <b style="color:blue;">Feito. Usuário admin criado na inicialização do Docker.</b>
                 </p>
                 <p>
-                    3. Criar um botão que deverá consumir uma API pública (de sua escolha) e exibir os resultados na tela <b style="color:blue;">Feito.</b>
+                    3. Criar um botão que deverá consumir uma API pública (de sua escolha) e exibir os resultados na tela <b style="color:blue;">Feito. API de números de Covid 19 Brasil</b>
                 </p>
                 <p>
                     4. Criar um campo na tela para selecionar um arquivo dos tipos “.xlsx” ou “csv” <b style="color:blue;">Feito.</b> </br>

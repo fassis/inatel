@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'rest_framework',
     'coreapp',
+    'covidapi',
 ]
 
 MIDDLEWARE = [
