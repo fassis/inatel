@@ -23,6 +23,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/', include('coreapp.urls', namespace='ubs')),
+    path('covid/', include('covidapi.urls', namespace='covidapi')),
     #login #logout
     path('', login_required(TemplateView.as_view(
         template_name='base.html')), name='index'),
