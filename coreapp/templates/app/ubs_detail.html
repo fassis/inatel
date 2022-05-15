@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content-title %}
+Arquivo importado ID: {{ unities_file.pk }} em {{ unities_file.created_at|date:"SHORT_DATETIME_FORMAT" }}
+{% endblock %}
+
+{% block extra-css %}
+<link rel="stylesheet" href="{% static 'css/pretty-print-json.css' %}">
+{% endblock %}
+
+{% block extra-js %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static 'js/pretty-print-json.min.js' %}"></script>
+
+<script>
+    var unities = {{ unities|safe }};
+    console.log(unities);
+    $('#unities').html(prettyPrintJson.toHtml(unities));
+</script>
+{% endblock %}
+
+{% block content %}
+    <pre id="unities"></pre>
+{% endblock %}

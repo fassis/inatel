@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load bootstrap5 %}
+
+{% block content-title %}
+Importar Unidades Básicas de Saúde
+{% endblock %}
+
+{% block content %}
+
+{% bootstrap_messages %}
+<form class="form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        {% bootstrap_form form %}
+        <div class="col align-middle">
+            {% buttons submit='OK' reset="Cancel" %}{% endbuttons %}
+        </div>
+    </div>
+</form>
+{% endblock %}
