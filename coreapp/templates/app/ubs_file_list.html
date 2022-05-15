@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content-title %}
+Lista de Importações
+{% endblock %}
+
+{% block content %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Importação</th>
+            <th scope="col">Arquivo</th>
+            <th scope="col">Nº UBSs</th>
+            <th scope="col">Serialização</th>
+            <th scope="col">Tabela</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for unity_file in unity_files %}
+        <tr>
+            <td>{{ unity_file.pk }}</td>
+            <td>{{ unity_file.created_at|date:"SHORT_DATETIME_FORMAT" }}</td>
+            <td><a href="{{ unity_file.file.url }}">{{ unity_file.file }}</a></td>
+            <td>{{ unity_file.healthunity_set.count }}</td>
+            <td><a href="{% url 'coreapp:health_unity_file_detail' unity_file.pk %}">JSON</a></td>
+            <td><a href="{% url 'coreapp:health_unity_list' unity_file.pk %}">Lista</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
