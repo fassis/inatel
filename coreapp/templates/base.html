@@ -1,0 +1,151 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Inatel</title>
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
+              rel='stylesheet'
+              type='text/css'>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5"></div>
+                </div>
+            </div>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light"
+                     id="ftco-navbar">
+                    <div class="container">
+                        <a class="navbar-brand" href="#">
+                            <img class="ml-10"
+                                 src="{% static 'img/logo_inatel_azul.png' %}"
+                                 height="20"
+                                 alt="Inatel">
+                        </a>
+                        <button class="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#ftco-nav"
+                                aria-controls="ftco-nav"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="fa fa-bars"></span> Menu
+                        </button>
+                        <div class="collapse navbar-collapse" id="ftco-nav">
+                            <ul class="navbar-nav ml-auto mr-md-3">
+                                {% url 'index' as index %}
+                                <li class="nav-item {% if request.path == index %}active{% endif %}">
+                                    <a class="nav-link" aria-current="page" href="{{ index }}">Home</a>
+                                </li>
+                                {% url 'coreapp:health_unities_import' as health_unities_import %}
+                                <li class="nav-item {% if request.path == health_unities_import %}active{% endif %}">
+                                    <a class="nav-link" href="{{ health_unities_import }}">Importar Unidades de Saúde</a>
+                                </li>
+                                {% url 'coreapp:health_unity_file_list' as health_unity_file_list %}
+                                <li class="nav-item {% if request.path == health_unity_file_list or request.path == health_unity_file_list %}active{% endif %}">
+                                    <a class="nav-link" href="{{ health_unity_file_list }}">Listar Importações</a>
+                                </li>
+                                {% url 'weather:index' as weather %}
+                                <li class="nav-item {% if request.path == weather %}active{% endif %}"
+                                    href="{{ weather }}">
+                                    <a class="nav-link">API Covid 19</a>
+                                </li>
+                                {% url 'logs:list' as logs_list %}
+                                <li class="nav-item {% if request.path == logs_list %}active{% endif %}">
+                                    <a class="nav-link" href="{{ logs_list }}">Logs</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"href="{% url 'logout' %}">Sair</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="container">
+                <h4 class="h4">{% block content-title %}Bem-vindo, {{ user.username }} {% endblock %}</h4>
+                {% block content %}
+                <h4>Teste Técnico Inatel</h4>
+
+                <p>
+                    Uma empresa XYZ deseja criar um sistema para uso interno de seus funcionários, eles necessitam de um sistema que seja seguro e com algumas funcionalidades e você será o responsável por esse desenvolvimento. Funcionalidades necessárias
+                </p>
+                <p></p>
+                <p>
+                    1. Criar uma interface gráfica para Login e Tela principal do sistema <b style="color:blue;">Feito.</b>
+                </p>
+                <p>
+                    2. Tela de Login contendo os campos “usuário” e “senha” previamente cadastrados <b style="color:blue;">Feito. Usuário admin criado na inicialização do Docker.</b>
+                </p>
+                <p>
+                    3. Criar um botão que deverá consumir uma API pública (de sua escolha) e exibir os resultados na tela <b style="color:blue;">Feito.</b>
+                </p>
+                <p>
+                    4. Criar um campo na tela para selecionar um arquivo dos tipos “.xlsx” ou “csv” <b style="color:blue;">Feito.</b> </br>
+                    a. Ao clicar em um botão, o arquivo deve: </br>
+                        i. Ser lido, interpretado e seus dados devem ser salvos na base de dados de uma única vez <b style="color:blue;">Feito. O arquivo é validado e importado.</b> </br>
+                        ii. O arquivo também deve ser salvo na base de dados <b style="color:blue;">Feito. Salvo em media/imports e caminho no banco.</b> </br>
+                    b. Esse arquivo deve ser anexado junto ao projeto para testes <b style="color:blue;">Feito.</b> </br>
+                    c. Criar ao menos dois “models” com relacionamento para salvar os dados dos arquivos <b style="color:blue;">Feito. Relacionamento da Unidade de Saúde com o Arquivo.</b>
+                </p>
+                <p>
+                    5. Criar uma “view” com “serializers” para exibir dados dos arquivos em uma tela específica <b style="color:blue;">Feito. Listar importações -> Clicar em JSON.</b>
+                </p>
+                <p>
+                    6. Criar o Admin Panel para validação dos dados <b style="color:blue;">Feito. Admin disponível em /admin.</b>
+                </p>
+                <p>
+                    7. Criar Logs de histórico de tudo que for realizado no sistema <br/>
+                    a. Esses Logs deverão ser salvos em uma base de dados diferente da base utilizada pelo ORM default do Django
+                </p>
+                <h4>
+                    Requisitos Técnicos
+                </h4>
+                <p>
+                    1. Backend: Utilizar Python/Django <b style="color:blue;">Feito.</b>
+                </p>
+                <p>
+                    2. Frontend: Escolher a tecnologia de sua preferência <b style="color:blue;">Bootstrap.</b>
+                </p>
+                <p>
+                    3. Banco de Dados: PostgreSQL <b style="color:blue;">Feito.</b>
+                </p>
+                <p>
+                a. Os bancos de dados devem rodar no Docker e as instruções de criação e execução devem ser enviadas junto com o projeto <b style="color:blue;">Feito. Banco default e logs.</b>
+                </p>
+                <p>
+                    4. Criar teste unitário
+                </p>
+                <h4>
+                    Entrega
+                </h4>
+                <p>
+                    1. Documentação
+                </p>
+                <p>
+                    2. Link do repositório onde o projeto estará disponível para download
+                </p>
+                <p>
+                    3. Instruções de cópia, instalação e execução do projeto em qualquer máquina em ambiente local
+                </p>
+                {% endblock %}
+            </div>
+        </section>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/feather.min.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/main.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        {% block extra-js %}{% endblock %}
+    </body>
+</html>
