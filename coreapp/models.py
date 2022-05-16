@@ -22,7 +22,7 @@ class HealthUnityFile(models.Model):
 
     def __str__(self):
         """HealthUnityFile head representation."""
-        return str(self.file)
+        return str(self.pk)
     
     def field_list(self):
         return [
