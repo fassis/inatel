@@ -58,8 +58,7 @@
                                 <li class="nav-item {% if request.path == covid_cases %}active{% endif %}">
                                     <a class="nav-link" href="{{ covid_cases }}">API Covid 19</a>
                                 </li>
-                                {% url 'logs:list' as logs_list %}
-                                <li class="nav-item {% if request.path == logs_list %}active{% endif %}">
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{ logs_list }}">Logs</a>
                                 </li>
                                 <li class="nav-item">
@@ -103,7 +102,7 @@
                     6. Criar o Admin Panel para validação dos dados <b style="color:blue;">Feito. Admin disponível em /admin.</b>
                 </p>
                 <p>
-                    7. Criar Logs de histórico de tudo que for realizado no sistema <br/>
+                    7. Criar Logs de histórico de tudo que for realizado no sistema. <b style="color:red;">Não feito. Criado apenas o banco separado.</b><br/> 
                     a. Esses Logs deverão ser salvos em uma base de dados diferente da base utilizada pelo ORM default do Django
                 </p>
                 <h4>
@@ -122,19 +121,19 @@
                 a. Os bancos de dados devem rodar no Docker e as instruções de criação e execução devem ser enviadas junto com o projeto <b style="color:blue;">Feito. Banco default e logs.</b>
                 </p>
                 <p>
-                    4. Criar teste unitário
+                    4. Criar teste unitário <b style="color:blue;">Feito</b>
                 </p>
                 <h4>
                     Entrega
                 </h4>
                 <p>
-                    1. Documentação
+                    1. Documentação <b style="color:blue;">Feito.</b>
                 </p>
                 <p>
-                    2. Link do repositório onde o projeto estará disponível para download
+                    2. Link do repositório onde o projeto estará disponível para download <b style="color:blue;">Feito. https://github.com/fassis/inatel</b>
                 </p>
                 <p>
-                    3. Instruções de cópia, instalação e execução do projeto em qualquer máquina em ambiente local
+                    3. Instruções de cópia, instalação e execução do projeto em qualquer máquina em ambiente local <b style="color:blue;">Feito.</b>
                 </p>
                 {% endblock %}
             </div>
