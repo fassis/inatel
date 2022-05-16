@@ -30,5 +30,5 @@ senha: admin
 http://localhost:8000
 ```
 
-As informações e conteúdos desta aplicação são apenas para fins de demonstrações técnicas
+As informações e conteúdos desta aplicação são apenas para fins de demonstrações técnicas.
 Portanto não dispõe de dados sensíveis de terceiros.
