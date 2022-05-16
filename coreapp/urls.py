@@ -16,5 +16,8 @@ urlpatterns = [
         name='health_unity_file_detail'),
     path('ubs/file/list/<int:health_unity_file_pk>/',
          views.health_unity_list, 
-        name='health_unity_list')
+        name='health_unity_list'),
+    path('ubs/list/<slug:state>/',
+         views.health_unity_state_list, 
+        name='health_unity_state_list')
 ]

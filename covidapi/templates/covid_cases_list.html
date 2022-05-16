@@ -32,7 +32,8 @@
             <th scope="col">Nº Casos</th>
             <th scope="col">Nº Mortes</th>
             <th scope="col">Nº Suspeitos</th>
-            <th scope="col">Nº Casos Descartados</th>
+            <th scope="col">Nº Descartados</th>
+            <th scope="col">UBSs vacinação</th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +47,7 @@
             <td>{{ obj.deaths }}</td>
             <td>{{ obj.suspects }}</td>
             <td>{{ obj.refuses }}</td>
+            <td><a href="{% url 'coreapp:health_unity_state_list' obj.uf %}">Listar</a></td>
         </tr>
         {% endfor %}
     </tbody>

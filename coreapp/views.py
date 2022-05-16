@@ -75,3 +75,14 @@ def health_unity_list(request, health_unity_file_pk):
 
     return render(request, 'app/generic_list.html', context )
 
+@login_required
+def health_unity_state_list(request, state):
+    unities = HealthUnity.objects.filter(ibge_uf=state)
+    
+    context = {
+        'object_list': unities,
+        'title': 'Lista de {} Unidades Básicas de Saúde de {}'.format(len(unities), state)
+    }
+
+    return render(request, 'app/generic_list.html', context )
+

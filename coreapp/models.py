@@ -57,7 +57,7 @@ class HealthUnityFile(models.Model):
 class HealthUnity(models.Model):
     file = models.ForeignKey(HealthUnityFile, on_delete=models.CASCADE)
     cnes_code = models.PositiveIntegerField()
-    ibge_uf = models.PositiveIntegerField()
+    ibge_uf = models.CharField(max_length=2)
     ibge_city = models.PositiveIntegerField()
     name = models.CharField(max_length=253)
     address = models.CharField(max_length=253)
@@ -76,6 +76,7 @@ class HealthUnity(models.Model):
     
     def field_list(self):
         return [
+                (u'UF', self.ibge_uf),
                 (u'CNES', self.cnes_code),
                 (u'Nome', self.name),
                 (u'Logradouro', self.address),
